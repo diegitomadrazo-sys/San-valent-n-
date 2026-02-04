@@ -8,14 +8,12 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 
 <style>
-/* ===== RESET ===== */
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
 }
 
-/* ===== BODY / FONDO PROFUNDO ===== */
 body {
     height: 100vh;
     overflow: hidden;
@@ -25,97 +23,70 @@ body {
     justify-content: center;
     align-items: center;
     background:
-        radial-gradient(circle at 20% 30%, rgba(255, 100, 150, 0.12), transparent 40%),
-        radial-gradient(circle at 80% 70%, rgba(120, 80, 255, 0.12), transparent 45%),
+        radial-gradient(circle at 30% 20%, rgba(255,120,160,0.15), transparent 40%),
+        radial-gradient(circle at 70% 80%, rgba(120,90,255,0.15), transparent 45%),
         radial-gradient(ellipse at bottom, #241026 0%, #05010a 70%);
 }
 
-/* ===== ESTRELLAS ===== */
-.stars, .stars2, .stars3 {
+/* Estrellas */
+.stars, .stars2 {
     position: absolute;
     inset: 0;
     background-repeat: repeat;
-    animation: mover 180s linear infinite;
+    animation: mover 200s linear infinite;
 }
 
 .stars {
     background-image:
-        radial-gradient(1px 1px at 20px 30px, white, transparent),
-        radial-gradient(1px 1px at 200px 150px, white, transparent),
-        radial-gradient(1px 1px at 400px 80px, white, transparent);
+        radial-gradient(1px 1px at 40px 60px, white, transparent),
+        radial-gradient(1px 1px at 180px 200px, white, transparent),
+        radial-gradient(1px 1px at 340px 120px, white, transparent);
 }
 
 .stars2 {
-    animation-duration: 260s;
-    opacity: 0.7;
+    animation-duration: 320s;
+    opacity: 0.6;
     background-image:
-        radial-gradient(1px 1px at 100px 200px, white, transparent),
-        radial-gradient(1px 1px at 300px 300px, white, transparent);
-}
-
-.stars3 {
-    animation-duration: 340s;
-    opacity: 0.5;
-    background-image:
-        radial-gradient(1px 1px at 500px 120px, white, transparent);
+        radial-gradient(1px 1px at 100px 300px, white, transparent),
+        radial-gradient(1px 1px at 420px 220px, white, transparent);
 }
 
 @keyframes mover {
-    from { transform: translateY(0); }
     to { transform: translateY(-1200px); }
 }
 
-/* ===== TARJETA CENTRAL ===== */
+/* Tarjeta */
 .card {
     position: relative;
     z-index: 5;
     width: 90%;
     max-width: 440px;
-    padding: 50px 38px;
+    padding: 48px 38px;
     border-radius: 32px;
     text-align: center;
-
-    background:
-        linear-gradient(
-            145deg,
-            rgba(255,255,255,0.12),
-            rgba(255,255,255,0.04)
-        );
-
+    background: linear-gradient(145deg, rgba(255,255,255,0.14), rgba(255,255,255,0.04));
     backdrop-filter: blur(18px);
-    box-shadow:
-        0 40px 80px rgba(0,0,0,0.65),
-        inset 0 0 40px rgba(255,255,255,0.06);
-
-    animation: entrada 1.8s ease;
+    box-shadow: 0 40px 80px rgba(0,0,0,0.65);
+    animation: entrada 1.6s ease;
 }
 
 @keyframes entrada {
-    from {
-        opacity: 0;
-        transform: translateY(60px) scale(0.95);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0) scale(1);
-    }
+    from { opacity: 0; transform: translateY(60px) scale(0.95); }
+    to { opacity: 1; transform: translateY(0) scale(1); }
 }
 
-/* ===== TEXTO ===== */
-.card h1 {
+h1 {
     font-family: 'Playfair Display', serif;
     font-size: 2.4em;
     margin-bottom: 14px;
 }
 
-.card .sub {
+.sub {
     font-size: 1.1em;
     opacity: 0.9;
     margin-bottom: 40px;
-    line-height: 1.6;
 }
 
-/* ===== BOTONES ===== */
 .buttons {
     position: relative;
     height: 50px;
@@ -137,9 +108,7 @@ button {
 }
 
 @keyframes latido {
-    0% { transform: scale(1); }
     50% { transform: scale(1.07); }
-    100% { transform: scale(1); }
 }
 
 .no {
@@ -149,7 +118,7 @@ button {
     left: 55%;
 }
 
-/* ===== RESULTADO FINAL ===== */
+/* Resultado */
 .resultado {
     position: absolute;
     z-index: 6;
@@ -158,45 +127,32 @@ button {
     animation: revelar 2.4s ease forwards;
 }
 
+@keyframes revelar {
+    from { opacity: 0; filter: blur(12px); transform: scale(0.85); }
+    to { opacity: 1; filter: blur(0); transform: scale(1); }
+}
+
 .resultado h2 {
     font-family: 'Playfair Display', serif;
     font-size: 4em;
-    margin-bottom: 20px;
-    text-shadow: 0 0 30px rgba(255,255,255,0.35);
+    margin-bottom: 18px;
 }
 
 .resultado span {
     font-size: 1.35em;
     line-height: 1.7;
-    opacity: 0.95;
 }
 
-@keyframes revelar {
-    from {
-        opacity: 0;
-        filter: blur(12px);
-        transform: scale(0.85);
-    }
-    to {
-        opacity: 1;
-        filter: blur(0);
-        transform: scale(1);
-    }
+/* Pareja */
+.pareja {
+    margin-top: 30px;
+    display: flex;
+    justify-content: center;
 }
 
-/* ===== PARTÍCULAS ===== */
-.particula {
-    position: absolute;
-    bottom: -30px;
-    animation: flotar 8s linear forwards;
-    opacity: 0.7;
-}
-
-@keyframes flotar {
-    to {
-        transform: translateY(-120vh) scale(1.5);
-        opacity: 0;
-    }
+svg {
+    width: 220px;
+    filter: drop-shadow(0 0 25px rgba(255,255,255,0.25));
 }
 </style>
 </head>
@@ -205,7 +161,6 @@ button {
 
 <div class="stars"></div>
 <div class="stars2"></div>
-<div class="stars3"></div>
 
 <div class="card" id="card">
     <h1>Dariana</h1>
@@ -226,34 +181,30 @@ button {
         y te amaré siempre,<br>
         mi más grande amor 🤍
     </span>
+
+    <!-- Muñequitos morenitos tomados de la mano -->
+    <div class="pareja">
+        <svg viewBox="0 0 200 100">
+            <circle cx="60" cy="30" r="12" fill="#8d5a3b"/>
+            <circle cx="140" cy="30" r="12" fill="#7a4a2e"/>
+            <line x1="60" y1="42" x2="60" y2="80" stroke="#8d5a3b" stroke-width="6" stroke-linecap="round"/>
+            <line x1="140" y1="42" x2="140" y2="80" stroke="#7a4a2e" stroke-width="6" stroke-linecap="round"/>
+            <line x1="60" y1="55" x2="100" y2="60" stroke="#8d5a3b" stroke-width="6" stroke-linecap="round"/>
+            <line x1="140" y1="55" x2="100" y2="60" stroke="#7a4a2e" stroke-width="6" stroke-linecap="round"/>
+        </svg>
+    </div>
 </div>
 
 <script>
-/* Botón No evasivo */
 const noBtn = document.getElementById("no");
 noBtn.addEventListener("mouseover", () => {
     noBtn.style.transform =
         `translate(${Math.random()*180-90}px, ${Math.random()*70-35}px)`;
 });
 
-/* Mostrar resultado */
 function mostrar() {
     document.getElementById("card").style.display = "none";
     document.getElementById("resultado").style.display = "block";
-    lanzarParticulas();
-}
-
-/* Partículas suaves */
-function lanzarParticulas() {
-    setInterval(() => {
-        const p = document.createElement("div");
-        p.className = "particula";
-        p.innerHTML = Math.random() > 0.5 ? "🤍" : "✨";
-        p.style.left = Math.random() * window.innerWidth + "px";
-        p.style.fontSize = (Math.random() * 14 + 14) + "px";
-        document.body.appendChild(p);
-        setTimeout(() => p.remove(), 8000);
-    }, 360);
 }
 </script>
 
