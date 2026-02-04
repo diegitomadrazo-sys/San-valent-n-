@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Para Dariana 🤍</title>
+
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+
+<style>
+/* ---------- RESET ---------- */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* ---------- BODY ---------- */
+body {
+    height: 100vh;
+    background: radial-gradient(ellipse at bottom, #2b1a2f 0%, #06010a 100%);
+    overflow: hidden;
+    font-family: 'Poppins', sans-serif;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* ---------- ESTRELLAS ---------- */
+.stars, .stars2, .stars3 {
+    position: absolute;
+    width: 200%;
+    height: 200%;
+    background-repeat: repeat;
+    animation: moverEstrellas 140s linear infinite;
+}
+
+.stars {
+    background-image:
+        radial-gradient(1px 1px at 20px 30px, white, transparent),
+        radial-gradient(1px 1px at 120px 220px, white, transparent),
+        radial-gradient(1px 1px at 300px 150px, white, transparent);
+}
+
+.stars2 {
+    animation-duration: 200s;
+    background-image:
+        radial-gradient(1px 1px at 60px 90px, white, transparent),
+        radial-gradient(1px 1px at 260px 320px, white, transparent);
+}
+
+.stars3 {
+    animation-duration: 260s;
+    background-image:
+        radial-gradient(1px 1px at 420px 120px, white, transparent);
+}
+
+@keyframes moverEstrellas {
+    from { transform: translateY(0); }
+    to { transform: translateY(-1000px); }
+}
+
+/* ---------- TARJETA ---------- */
+.card {
+    position: relative;
+    z-index: 5;
+    background: rgba(255, 255, 255, 0.08);
+    backdrop-filter: blur(14px);
+    border-radius: 30px;
+    padding: 45px 35px;
+    width: 90%;
+    max-width: 420px;
+    text-align: center;
+    box-shadow: 0 30px 60px rgba(0,0,0,0.6);
+    animation: entrada 1.6s ease;
+}
+
+@keyframes entrada {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* ---------- TEXTO ---------- */
+.card h1 {
+    font-family: 'Playfair Display', serif;
+    font-size: 2.2em;
+    margin-bottom: 12px;
+}
+
+.card .sub {
+    font-size: 1.05em;
+    opacity: 0.85;
+    margin-bottom: 35px;
+}
+
+/* ---------- BOTONES ---------- */
+.buttons {
+    position: relative;
+}
+
+button {
+    border: none;
+    padding: 12px 38px;
+    border-radius: 50px;
+    font-size: 1em;
+    cursor: pointer;
+}
+
+.si {
+    background: #ff4d6d;
+    color: white;
+    box-shadow: 0 10px 30px rgba(255,77,109,0.5);
+    animation: latido 1.8s infinite;
+}
+
+@keyframes latido {
+    0% { transform: scale(1); }
+    50% { transform: scale(1.06); }
+    100% { transform: scale(1); }
+}
+
+.no {
+    background: white;
+    color: #ff4d6d;
+    position: absolute;
+    left: 55%;
+}
+
+/* ---------- RESULTADO ---------- */
+.resultado {
+    position: absolute;
+    z-index: 10;
+    text-align: center;
+    display: none;
+    animation: aparecer 2.2s ease;
+}
+
+.resultado h2 {
+    font-family: 'Playfair Display', serif;
+    font-size: 3.8em;
+    margin-bottom: 18px;
+}
+
+.resultado span {
+    font-size: 1.25em;
+    line-height: 1.6;
+    opacity: 0.95;
+}
+
+@keyframes aparecer {
+    from { opacity: 0; transform: scale(0.7); }
+    to { opacity: 1; transform: scale(1); }
+}
+
+/* ---------- CORAZONES ---------- */
+.corazon {
+    position: absolute;
+    bottom: -20px;
+    animation: flotar 6s linear forwards;
+    opacity: 0.85;
+}
+
+@keyframes flotar {
+    to {
+        transform: translateY(-110vh) scale(1.4);
+        opacity: 0;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="stars"></div>
+<div class="stars2"></div>
+<div class="stars3"></div>
+
+<div class="card" id="card">
+    <h1>Dariana</h1>
+    <div class="sub">
+        ¿Siempre serás mi San Valentín,<br>
+        mi chucu?
+    </div>
+
+    <div class="buttons">
+        <button class="si" onclick="mostrar()">Sí</button>
+        <button class="no" id="no">No</button>
+    </div>
+</div>
+
+<div class="resultado" id="resultado">
+    <h2>Te amo</h2>
+    <span>
+        y te amaré siempre,<br>
+        mi más grande amor 🤍
+    </span>
+</div>
+
+<script>
+/* Botón No evasivo */
+const noBtn = document.getElementById("no");
+noBtn.addEventListener("mouseover", () => {
+    noBtn.style.transform =
+        `translate(${Math.random()*160-80}px, ${Math.random()*60-30}px)`;
+});
+
+/* Mostrar resultado */
+function mostrar() {
+    document.getElementById("card").style.display = "none";
+    document.getElementById("resultado").style.display = "block";
+    lanzarCorazones();
+}
+
+/* Corazones suaves */
+function lanzarCorazones() {
+    setInterval(() => {
+        const c = document.createElement("div");
+        c.className = "corazon";
+        c.innerHTML = "🤍";
+        c.style.left = Math.random() * window.innerWidth + "px";
+        c.style.fontSize = (Math.random() * 16 + 16) + "px";
+        document.body.appendChild(c);
+        setTimeout(() => c.remove(), 6000);
+    }, 420);
+}
+</script>
+
+</body>
+</html>
